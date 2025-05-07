@@ -9,51 +9,119 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#ffe6f0, #fff0f5);
+      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
       color: #333;
       text-align: center;
+      overflow-x: hidden;
     }
+
     header {
       padding: 50px 20px;
+      animation: fadeIn 2s ease-in;
+      position: relative;
     }
+
     h1 {
       font-size: 3em;
       color: #e91e63;
     }
+
+    .decor-top {
+      font-size: 2rem;
+      animation: floatRoses 4s ease-in-out infinite;
+    }
+
+    .decor-bottom {
+      font-size: 2rem;
+      animation: floatCake 3s ease-in-out infinite;
+    }
+
     .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      gap: 15px;
       padding: 20px;
+      animation: slideIn 2s ease-in-out;
     }
+
     .gallery img {
       width: 200px;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
     .letter {
       max-width: 700px;
       margin: 30px auto;
-      padding: 20px;
+      padding: 25px;
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      animation: fadeInUp 2s ease-in;
     }
+
     footer {
-      margin-top: 30px;
+      margin: 30px 0;
       font-size: 0.9em;
       color: #666;
+      animation: fadeIn 2s ease-in;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatRoses {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatCake {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
   </style>
 </head>
 <body>
-  <!-- Background Music  -->
-  <audio autoplay loop>
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
     <source src="background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+  <script>
+    document.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      if (music.paused) {
+        music.play().catch(() => {});
+      }
+    }, { once: true });
+  </script>
+
+  <!-- Rose Decoration -->
+  <div class="decor-top">🌹🌹🌹🌹🌹</div>
 
   <header>
     <h1>Happy Birthday, My Love ❤️</h1>
@@ -61,7 +129,7 @@
   </header>
 
   <section class="gallery">
-    <img src="photo1.jpg" alt="In">
+	<img src="photo1.jpg" alt="In">
     <img src="photo2.jpg" alt="the storybook">
     <img src="photo3.jpg" alt="of ">
 	<img src="photo4.jpg" alt="my life">
@@ -70,20 +138,22 @@
 	<img src="photo7.jpg" alt="are">
 	<img src="photo8.jpg" alt="the">
 	<img src="photo9.jpg" alt="most colorful">
-    <!-- Add more photos as needed -->
   </section>
 
   <section class="letter">
-    <h2>A Letter from My Heart</h2>
+    <h2>A Letter from My Heart 🎂</h2>
     <p>
       My dearest Bhou Bhou,<br/><br/>
-      Today we celebrate your life, your smile, your laugh, your soul… and how lucky I am to walk this journey with you.
+      Today is a special day in your life. We celebrate your life, your smile, your laugh, your soul… and how lucky I am to walk this journey with you.
       Every moment with you is a gift, and I hope this little website reminds you of how truly special you are.<br/><br/>
-      I love you more than words can ever express.<br/><br/>
+      I love you more than words can ever express ❤️❤️<br/><br/>
       Yours always,<br/>
       Sola Idur,
     </p>
   </section>
+
+  <!-- Cake Decoration -->
+  <div class="decor-bottom">🎂🎉🍰🎈🎂</div>
 
   <footer>
     <p>© 2025 | Made with love by Sola Idur</p>
